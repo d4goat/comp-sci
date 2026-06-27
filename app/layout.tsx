@@ -1,16 +1,19 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Mona_Sans, Bebas_Neue } from "next/font/google";
 import "./globals.css";
+import { neue_montreal, pp_neue } from "@/fonts";
+import TransitionProviders from "@/providers/TransitionProviders";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+const bebas = Bebas_Neue({
+  variable: '--font-bebas',
+  subsets: ['latin'],
+  weight: '400'
+})
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+const mona = Mona_Sans({
+  variable: '--font-mona',
+  subsets: ['latin']
+})
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -25,9 +28,13 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${neue_montreal.variable} ${bebas.variable} ${mona.variable} ${pp_neue.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col selection:bg-black selection:text-theme">
+        <TransitionProviders>
+          {children}
+        </TransitionProviders>
+      </body>
     </html>
   );
 }
