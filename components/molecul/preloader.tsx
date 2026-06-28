@@ -5,35 +5,27 @@ import gsap from "gsap"
 import { SplitText } from "gsap/SplitText"
 import { CustomEase } from "gsap/all"
 import { useGSAP } from "@gsap/react"
-import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { imageList } from "@/data"
 import { useState, useEffect } from "react"
 
-declare global {
-    interface Window {
-        __preloader_shown?: boolean;
-    }
-}
+// Module-level flag: bertahan hidup selama browser session (client-side transitions),
+// namun langsung ter-reset (kembali false) pada setiap page refresh (full reload).
+let preloaderHasShown = false
 
 const Preloader = () => {
-    // Mengecek apakah preloader harus ditampilkan.
-    // Jika window.__preloader_shown bernilai true, preloader dilewati langsung.
-    const [shouldShow, setShouldShow] = useState(() => {
-        if (typeof window === 'undefined') return true
-        return !window.__preloader_shown
-    })
+    const [shouldShow, setShouldShow] = useState(false)
 
     useEffect(() => {
-        // Tandai preloader sudah pernah ditampilkan setelah komponen ini dipasang
-        if (typeof window !== 'undefined') {
-            window.__preloader_shown = true
+        if (!preloaderHasShown) {
+            preloaderHasShown = true
+            setShouldShow(true)
         }
     }, [])
 
     useGSAP(() => {
         if (!shouldShow) return
 
-        gsap.registerPlugin(SplitText, CustomEase, ScrollTrigger)
+        gsap.registerPlugin(SplitText, CustomEase)
         CustomEase.create('hop', "0.8, 0, 0.2, 1")
         CustomEase.create('hop2', "0.9, 0, 0.1, 1")
 
@@ -121,37 +113,13 @@ const Preloader = () => {
             stagger: -0.075
         }, 3.5)
 
-        // Preloader slide ke atas (clipPath)
+        // Hanya animasikan preloader itu sendiri untuk slide up (clip-path)
         tl.to('.preloader', {
             clipPath: 'polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)',
             duration: 1,
             ease: 'hop2',
         }, 4.35)
 
-        // Halaman sesungguhnya (.page-content) slide up ke posisinya semula
-        tl.fromTo('.page-content',
-            { y: '100vh' },
-            {
-                y: '0%',
-                duration: 1,
-                ease: 'hop2',
-                onStart: () => {
-                    // Beri hints render hardware acceleration ke browser
-                    gsap.set('.page-content', { willChange: 'transform' })
-                },
-                onComplete: () => {
-                    // Hapus kelas preloader-active agar overflow & scrolling kembali normal
-                    document.documentElement.classList.remove('preloader-active');
-
-                    // Clear inline style dari GSAP agar tidak bentrok dengan kalkulasi layout normal
-                    gsap.set('.page-content', { clearProps: 'all' });
-
-                    // Refresh ScrollTrigger agar pin & layout trigger dihitung ulang dari posisi normal
-                    ScrollTrigger.refresh();
-                }
-            },
-            4.35
-        )
 
     }, [shouldShow])
 
@@ -165,11 +133,13 @@ const Preloader = () => {
                 ))}
             </div>
 
-            <div className="preloader-header absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                <h1 className="uppercase text-2xl">Loreast</h1>
+            <div className="preloader-header text-theme">
+                <h1 className="uppercase text-6xl font-semibold absolute top-3/4 left-1/2 -translate-x-1/2 -translate-y-1/2">Loreast</h1>
 
-                <div className="preloader-counter text-lg">
-                    <p>000</p>
+                <div className="absolute top-2/5 left-3/5 -translate-x-1/2 translate-y-1/2 ml-10">
+                    <div className="preloader-counter text-lg">
+                        <p>000</p>
+                    </div>
                 </div>
             </div>
         </div>

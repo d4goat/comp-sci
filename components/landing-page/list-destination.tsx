@@ -43,14 +43,14 @@ const ListDestination = () => {
             cardsRef.current?.querySelectorAll('.card') || []
         ) as Element[]
 
-        // ScrollTrigger.create({
-        //     trigger: introRef.current,
-        //     start: 'top 10%',
-        //     endTrigger: outroRef.current,
-        //     end: 'top center',
-        //     pin: introRef.current,
-        //     pinSpacing: false,
-        // })
+        ScrollTrigger.create({
+            trigger: introRef.current,
+            start: 'top 10%',
+            endTrigger: outroRef.current,
+            end: 'top center',
+            pin: introRef.current,
+            pinSpacing: false,
+        })
 
         cards.forEach((card, index) => {
             const inner = card.querySelector('.card-inner') as Element

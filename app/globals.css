@@ -217,25 +217,7 @@ section p .block-line-wrapper {
   will-change: transform, clip-path;
 }
 
-.preloader-counter {
-  position: absolute;
-  top: -1.5rem;
-  left: calc(100% + 1.5rem);
-  overflow: hidden;
-}
-
 .char, .word, .preloader-counter p{
   transform: translateY(100%);
-  will-change: transform;
-}
-
-/* Kunci scroll saat preloader aktif */
-.preloader-active, .preloader-active body {
-  overflow: hidden !important;
-}
-
-/* Mulai posisi konten halaman dari bawah viewport jika preloader aktif */
-.preloader-active .page-content {
-  transform: translateY(100vh);
   will-change: transform;
 }
