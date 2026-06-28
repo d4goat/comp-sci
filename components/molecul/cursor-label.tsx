@@ -17,7 +17,7 @@ export const CursorCircle = forwardRef(
         return (
             <MotionComponent
                 ref={ref}
-                className='bg-primary-bg'
+                className='bg-primary'
                 variants={variants}
                 initial='initial'
                 animate={active ? 'enter' : 'closed'}
@@ -32,7 +32,7 @@ export const CursorLabel = forwardRef(
         return (
             <MotionComponent
                 ref={ref}
-                className='bg-primary-bg text-lg font-heading'
+                className='bg-primary text-theme text-lg font-semibold'
                 variants={variants}
                 initial='initial'
                 animate={active ? 'enter' : 'closed'}

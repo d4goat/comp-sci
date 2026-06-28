@@ -13,7 +13,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
 
-const MapDestination = ({ latitude, longitude, title }: { latitude: number, longitude: number, title: string }) => {
+const MapDestination = ({ latitude, longitude, title, street }: { latitude: number, longitude: number, title: string, street: string }) => {
     const mapRef = useRef<HTMLDivElement>(null)
 
     useGSAP(() => {
@@ -48,10 +48,10 @@ const MapDestination = ({ latitude, longitude, title }: { latitude: number, long
                         />
                         <MarkerLabel position="bottom" className="text-xl text-white">{title}</MarkerLabel>
                     </MarkerContent>
-
                 </MapMarker>
             </Map>
         </div>
+        <p className="mt-6 text-center text-xl italic">{street}</p>
     </section>
 }
 

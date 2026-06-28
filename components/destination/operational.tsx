@@ -1,11 +1,13 @@
 'use client'
 
 import Copy from "../molecul/copy"
-import { Clock, Ticket, AlertCircle, CheckCircle2 } from "lucide-react"
+import { Clock, Ticket, AlertCircle, CheckCircle2, Home } from "lucide-react"
 import { gsap } from "@/lib/gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { useGSAP } from "@gsap/react"
 import { useRef } from "react"
+import { Button } from "../ui/button"
+import Link from "next/link"
 
 const Operational = () => {
     const cardContainerRef = useRef<HTMLDivElement>(null)
@@ -33,7 +35,7 @@ const Operational = () => {
         // Menggunakan bg off-white yang bersih agar card putih lebih menonjol
         <section className="min-h-dvh py-28 px-10 md:px-20 bg-[#F8F9FA] text-gray-800">
             <Copy>
-                <h2 className="text-5xl md:text-6xl font-semibold mb-16 text-center lg:text-left">
+                <h2 className="text-5xl md:text-6xl font-semibold mb-20 text-center lg:text-left">
                     Informasi Operasional
                 </h2>
             </Copy>
@@ -117,6 +119,11 @@ const Operational = () => {
                     </div>
                 </div>
 
+            </div>
+            <div className="flex justify-center mt-10">
+                <Link href={'/'}>
+                    <Button size={'2xl'} variant={'outline'} className=""><Home /> Kembali Ke Halaman Utama</Button>
+                </Link>
             </div>
         </section>
     )

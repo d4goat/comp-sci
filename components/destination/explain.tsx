@@ -5,10 +5,7 @@ import { gsap } from "@/lib/gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 
-const Explain = ({ title }: { title: string }) => {
-    const item = listItem.find(i => i.title.toLowerCase() === title)
-    const dummy = listItem[0]
-
+const Explain = ({ description, additionalDesc, notes }: { description: string, additionalDesc: string, notes: string }) => {
     const containerRef = useRef<HTMLDivElement>(null)
     const panel1Ref = useRef<HTMLDivElement>(null)
     const panel2Ref = useRef<HTMLDivElement>(null)
@@ -66,12 +63,12 @@ const Explain = ({ title }: { title: string }) => {
         })
 
         // SEQUENCE FOR 3 PANELS:
-        // Total timeline duration is 2.0.
-        // 0.0 - 0.2: Hold Panel 1
-        // 0.2 - 0.8: Transition 1 (Panel 1 Out / Panel 2 In)
-        // 0.8 - 1.2: Hold Panel 2
-        // 1.2 - 1.8: Transition 2 (Panel 2 Out / Panel 3 In)
-        // 1.8 - 2.0: Hold Panel 3
+        // Total timeline duration is 2.5.
+        // 0.0 - 0.2: Hold Panel 1 (0% - 8% scroll)
+        // 0.2 - 0.8: Transition 1 (Panel 1 Out / Panel 2 In) (8% - 32% scroll)
+        // 0.8 - 1.2: Hold Panel 2 (32% - 48% scroll)
+        // 1.2 - 1.8: Transition 2 (Panel 2 Out / Panel 3 In) (48% - 72% scroll)
+        // 1.8 - 2.5: Hold Panel 3 (72% - 100% scroll)
 
         // --- Transition 1 ---
         // Panel 1 Out: Fades, blurs, and shifts up
@@ -111,13 +108,20 @@ const Explain = ({ title }: { title: string }) => {
             ease: 'sine.inOut'
         }, 1.3)
 
+        // --- Hold Panel 3 ---
+        // Keeps Panel 3 active and readable so the user has to scroll significantly before the next section appears
+        tl.to(panel3Ref.current, {
+            opacity: 1,
+            duration: 0.7
+        }, 1.8)
+
     }, { scope: containerRef })
 
     return (
-        /* Increased container height to h-[300vh] to provide a longer, comfortable scroll track for 3 panels */
+        /* Increased container height to h-[350vh] to provide a longer, comfortable scroll track for 3 panels */
         <section
             ref={containerRef}
-            className="relative h-[300vh] w-full"
+            className="relative h-[350vh] w-full"
         >
             {/* The sticky viewport container stays fixed on screen during the scroll track */}
             <div className="sticky top-0 h-dvh w-full overflow-hidden bg-white text-gray-800">
@@ -129,7 +133,7 @@ const Explain = ({ title }: { title: string }) => {
                 >
                     <h2 className="uppercase text-neutral-500 font-semibold">Tentang Destinasi</h2>
                     <p className="text-3xl md:text-5xl font-bold leading-tight text-text max-w-6xl text-justify">
-                        {dummy.description}
+                        {description}
                     </p>
                 </div>
 
@@ -141,7 +145,7 @@ const Explain = ({ title }: { title: string }) => {
                 >
                     {/* <h2 className="uppercase text-neutral-500 font-semibold">Informasi Tambahan</h2> */}
                     <p className="text-3xl md:text-5xl font-bold leading-tight text-text max-w-6xl text-justify">
-                        {dummy.additionalDesc}
+                        {additionalDesc}
                     </p>
                 </div>
 
@@ -153,7 +157,7 @@ const Explain = ({ title }: { title: string }) => {
                 >
                     {/* <h2 className="uppercase text-neutral-500 font-semibold">Catatan</h2> */}
                     <p className="text-3xl md:text-5xl font-bold leading-tight text-text max-w-6xl text-justify">
-                        {dummy.notes}
+                        {notes}
                     </p>
                 </div>
 

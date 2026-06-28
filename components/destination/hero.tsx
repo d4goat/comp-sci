@@ -10,7 +10,7 @@ const Hero = ({ title }: { title: string }) => (
                 loop
                 data-cld-video-player></video>
         </div>
-        <div className="absolute inset-0 bg-black/50" />
+        <div className="absolute inset-0 bg-black/60" />
         <div className="relative z-10 min-h-dvh w-full flex justify-center items-center">
             <Copy>
                 <h1 className="font-heading text-6xl md:text-7xl opacity-80 text-background uppercase italic">

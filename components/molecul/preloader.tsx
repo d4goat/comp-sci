@@ -5,10 +5,35 @@ import gsap from "gsap"
 import { SplitText } from "gsap/SplitText"
 import { CustomEase } from "gsap/all"
 import { useGSAP } from "@gsap/react"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
+import { imageList } from "@/data"
+import { useState, useEffect } from "react"
+
+declare global {
+    interface Window {
+        __preloader_shown?: boolean;
+    }
+}
 
 const Preloader = () => {
+    // Mengecek apakah preloader harus ditampilkan.
+    // Jika window.__preloader_shown bernilai true, preloader dilewati langsung.
+    const [shouldShow, setShouldShow] = useState(() => {
+        if (typeof window === 'undefined') return true
+        return !window.__preloader_shown
+    })
+
+    useEffect(() => {
+        // Tandai preloader sudah pernah ditampilkan setelah komponen ini dipasang
+        if (typeof window !== 'undefined') {
+            window.__preloader_shown = true
+        }
+    }, [])
+
     useGSAP(() => {
-        gsap.registerPlugin(SplitText, CustomEase)
+        if (!shouldShow) return
+
+        gsap.registerPlugin(SplitText, CustomEase, ScrollTrigger)
         CustomEase.create('hop', "0.8, 0, 0.2, 1")
         CustomEase.create('hop2', "0.9, 0, 0.1, 1")
 
@@ -22,6 +47,8 @@ const Preloader = () => {
 
         const preloaderHeaderSplit = splitText('.preloader-header h1', 'chars', 'char')
         const testCopySplit = splitText('.test-copy', 'chars', 'char')
+        void preloaderHeaderSplit
+        void testCopySplit
 
         const preloadingImgInitRotation = [7.5, -2.5, -10, 12.5, -5, 5]
         gsap.set('.preloader-img', {
@@ -77,9 +104,7 @@ const Preloader = () => {
             y: '-100%',
             duration: 0.75,
             ease: 'hop2'
-        },
-            3.25
-        )
+        }, 3.25)
 
         tl.to('.preloader-header h1 .char', {
             y: '-100%',
@@ -96,26 +121,52 @@ const Preloader = () => {
             stagger: -0.075
         }, 3.5)
 
+        // Preloader slide ke atas (clipPath)
         tl.to('.preloader', {
             clipPath: 'polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)',
             duration: 1,
             ease: 'hop2',
         }, 4.35)
 
-    }, [])
+        // Halaman sesungguhnya (.page-content) slide up ke posisinya semula
+        tl.fromTo('.page-content',
+            { y: '100vh' },
+            {
+                y: '0%',
+                duration: 1,
+                ease: 'hop2',
+                onStart: () => {
+                    // Beri hints render hardware acceleration ke browser
+                    gsap.set('.page-content', { willChange: 'transform' })
+                },
+                onComplete: () => {
+                    // Hapus kelas preloader-active agar overflow & scrolling kembali normal
+                    document.documentElement.classList.remove('preloader-active');
+
+                    // Clear inline style dari GSAP agar tidak bentrok dengan kalkulasi layout normal
+                    gsap.set('.page-content', { clearProps: 'all' });
+
+                    // Refresh ScrollTrigger agar pin & layout trigger dihitung ulang dari posisi normal
+                    ScrollTrigger.refresh();
+                }
+            },
+            4.35
+        )
+
+    }, [shouldShow])
+
+    if (!shouldShow) return null
 
     return (
-        <div className="preloader bg-neutral-900 fixed top-0 left-0 w-full min-h-svh overflow-hidden z-10">
+        <div className="preloader bg-neutral-900 fixed top-0 left-0 w-full min-h-svh overflow-hidden z-50">
             <div className="preloader-images absolute top-0 left-0 w-full h-full">
-                <Image src="/images/cards-image-1.jpg" alt="Preloader image 1" width={250} height={400} className="object-cover preloader-img" />
-                <Image src="/images/cards-image-2.jpg" alt="Preloader image 2" width={250} height={400} className="object-cover preloader-img" />
-                <Image src="/images/cards-image-3.jpg" alt="Preloader image 3" width={250} height={400} className="object-cover preloader-img" />
-                <Image src="/images/cards-image-4.jpg" alt="Preloader image 4" width={250} height={400} className="object-cover preloader-img" />
-                <Image src="/images/cards-image-5.jpg" alt="Preloader image 5" width={250} height={400} className="object-cover preloader-img" />
+                {imageList.map((item, index) => (
+                    <Image src={item} key={index} alt={`Preloader ${index}`} width={250} height={400} className="object-cover preloader-img" />
+                ))}
             </div>
 
             <div className="preloader-header absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                <h1 className="uppercase text-2xl">Archive</h1>
+                <h1 className="uppercase text-2xl">Loreast</h1>
 
                 <div className="preloader-counter text-lg">
                     <p>000</p>

@@ -7,7 +7,7 @@ import { ReactNode } from "react"
 const PageWrapper = ({ children, className }: { children: ReactNode, className?: string }) => {
     useLenis()
     return (
-        <main className={cn('min-h-dvh flex flex-col', className)}>
+        <main className={cn('min-h-dvh flex flex-col page-content', className)}>
             {children}
         </main>
     )

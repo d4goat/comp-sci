@@ -5,7 +5,6 @@ import { Explain } from "@/components/landing-page/explain";
 import Hero from "@/components/landing-page/hero";
 import { ListDestination } from "@/components/landing-page/list-destination";
 import { PageWrapper } from "@/components/page-wrapper";
-import Image from "next/image";
 import MouseTrail from "@/components/atom/mouse-trail";
 
 export default function Page() {

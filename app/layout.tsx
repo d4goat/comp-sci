@@ -3,6 +3,7 @@ import { Mona_Sans, Bebas_Neue } from "next/font/google";
 import "./globals.css";
 import { neue_montreal, pp_neue } from "@/fonts";
 import TransitionProviders from "@/providers/TransitionProviders";
+import Preloader from "@/components/molecul/preloader";
 
 const bebas = Bebas_Neue({
   variable: '--font-bebas',
@@ -29,8 +30,19 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${neue_montreal.variable} ${bebas.variable} ${mona.variable} ${pp_neue.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col selection:bg-black selection:text-theme">
+      <body className="min-h-full flex flex-col selection:bg-black selection:text-theme" suppressHydrationWarning>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              if (typeof window !== 'undefined' && !window.__preloader_shown) {
+                document.documentElement.classList.add('preloader-active');
+              }
+            `
+          }}
+        />
+        <Preloader />
         <TransitionProviders>
           {children}
         </TransitionProviders>
