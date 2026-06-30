@@ -1,7 +1,7 @@
 import Copy from "../molecul/copy";
 
 const Hero = ({ title, video }: { title: string, video: string }) => (
-    <section className="">
+    <section className="relative w-full h-screen overflow-hidden">
         <div className="absolute inset-0 w-full h-full [&_.cld-video-player]:w-full! [&_.cld-video-player]:h-full! [&_video]:w-full! [&_video]:h-full! [&_video]:object-cover!">
             <video src={video}
                 autoPlay
@@ -10,8 +10,8 @@ const Hero = ({ title, video }: { title: string, video: string }) => (
                 loop
                 data-cld-video-player></video>
         </div>
-        <div className="absolute inset-0 bg-black/60 h-screen" />
-        <div className="relative z-10 min-h-screen w-full flex justify-center items-center">
+        <div className="absolute inset-0 bg-black/60 w-full h-full" />
+        <div className="relative z-10 h-full w-full flex justify-center items-center">
             <Copy>
                 <h1 className="font-heading text-5xl md:text-7xl opacity-80 text-background uppercase italic">
                     <div className="bg-black py-3 pl-4 pr-7">{title}</div>
@@ -20,5 +20,6 @@ const Hero = ({ title, video }: { title: string, video: string }) => (
         </div>
     </section>
 )
+
 
 export { Hero }

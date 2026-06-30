@@ -2,7 +2,7 @@ import Copy from "../molecul/copy"
 
 const Explain = () => {
     return (
-        <section className="relative min-h-screen px-5 sm:px-10 md:px-20 py-16 md:py-28 flex flex-col justify-center items-center overflow-hidden">
+        <section className="relative min-h-screen px-5 sm:px-10 md:px-20 md:py-28 flex flex-col justify-center items-center overflow-hidden">
             <div className="flex flex-col gap-8 md:gap-10 justify-center items-center w-full">
                 <Copy>
                     <h2 className="text-3xl md:text-4xl lg:text-5xl leading-tight text-justify font-black text-text">
