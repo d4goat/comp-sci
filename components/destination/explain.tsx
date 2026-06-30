@@ -31,21 +31,21 @@ const Explain = ({ description, additionalDesc, notes }: { description: string, 
 
         gsap.set(panel1Ref.current, {
             y: 0,
-            opacity: 1,
+            autoAlpha: 1,
             filter: 'blur(0px)',
             transformPerspective: 1000,
             backfaceVisibility: 'hidden'
         })
         gsap.set(panel2Ref.current, {
             y: 60, // Sedikit dikurangi dari 80 agar transisi mobile tidak terlalu jauh melompat
-            opacity: 0,
+            autoAlpha: 0,
             filter: 'blur(16px)',
             transformPerspective: 1000,
             backfaceVisibility: 'hidden'
         })
         gsap.set(panel3Ref.current, {
             y: 120,
-            opacity: 0,
+            autoAlpha: 0,
             filter: 'blur(16px)',
             transformPerspective: 1000,
             backfaceVisibility: 'hidden'
@@ -63,7 +63,7 @@ const Explain = ({ description, additionalDesc, notes }: { description: string, 
         // --- Transition 1 ---
         tl.to(panel1Ref.current, {
             y: -60,
-            opacity: 0,
+            autoAlpha: 0,
             filter: 'blur(16px)',
             duration: 0.5,
             ease: 'sine.inOut'
@@ -71,7 +71,7 @@ const Explain = ({ description, additionalDesc, notes }: { description: string, 
 
         tl.to(panel2Ref.current, {
             y: 0,
-            opacity: 1,
+            autoAlpha: 1,
             filter: 'blur(0px)',
             duration: 0.5,
             ease: 'sine.inOut'
@@ -80,7 +80,7 @@ const Explain = ({ description, additionalDesc, notes }: { description: string, 
         // --- Transition 2 ---
         tl.to(panel2Ref.current, {
             y: -60,
-            opacity: 0,
+            autoAlpha: 0,
             filter: 'blur(16px)',
             duration: 0.5,
             ease: 'sine.inOut'
@@ -88,7 +88,7 @@ const Explain = ({ description, additionalDesc, notes }: { description: string, 
 
         tl.to(panel3Ref.current, {
             y: 0,
-            opacity: 1,
+            autoAlpha: 1,
             filter: 'blur(0px)',
             duration: 0.5,
             ease: 'sine.inOut'
@@ -96,7 +96,7 @@ const Explain = ({ description, additionalDesc, notes }: { description: string, 
 
         // --- Hold Panel 3 ---
         tl.to(panel3Ref.current, {
-            opacity: 1,
+            autoAlpha: 1,
             duration: 0.7
         }, 1.8)
 

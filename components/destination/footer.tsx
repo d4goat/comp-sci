@@ -86,10 +86,10 @@ const Footer = ({ id }: { id: number }) => {
                     View
                 </CursorLabel>
             </div>
-            <div className="container mx-auto flex md:flex-row flex-col items-end max-w-5xl justify-between">
+            <div className="container mx-auto flex md:flex-row flex-col items-center md:items-end max-w-5xl justify-between">
                 <span className="text-muted text-lg">All right reserved &copy; 2026</span>
                 <div className="flex flex-col gap-3">
-                    <p className="text-neutral-300 uppercase text-xs">Version</p>
+                    <p className="text-neutral-300 uppercase text-xs hidden md:block">Version</p>
                     <p className="text-white">2026 &copy; Edition</p>
                 </div>
 

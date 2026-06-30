@@ -75,7 +75,7 @@ const ListDestination = () => {
                         filter: 'blur(0px)',
                         duration: 0.75,
                         stagger: 0.15,
-                        ease: 'power2.Out'
+                        ease: 'power2.out'
                     })
                 }
             })
@@ -109,7 +109,7 @@ const ListDestination = () => {
     }, { scope: containerRef })
 
     return (
-        <section className="relative px-5 md:px-10 w-full min-h-dvh flex flex-col gap-20 py-24 bg-theme overflow-hidden" ref={containerRef}>
+        <section className="relative px-5 md:px-10 w-full min-h-dvh flex flex-col gap-20 py-24 bg-theme" ref={containerRef}>
             <div className="px-5 md:px-10 intro" ref={introRef}>
                 <div className="max-w-fit">
                     <Copy revealerWidth="115%" left="-0.4em">
