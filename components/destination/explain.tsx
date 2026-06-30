@@ -108,7 +108,7 @@ const Explain = ({ description, additionalDesc, notes }: { description: string, 
     return (
         <section
             ref={containerRef}
-            className="relative h-[300vh] w-full"
+            className="relative h-[350vh] w-full"
         >
             {/* FIX: Mengubah h-dvh menjadi h-screen agar tinggi tetap konsisten saat URL bar mobile bergeser */}
             <div className="sticky top-0 h-screen w-full overflow-hidden bg-white text-gray-800">

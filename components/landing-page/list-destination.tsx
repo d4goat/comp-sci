@@ -86,7 +86,7 @@ const ListDestination = () => {
                 endTrigger: outroRef.current,
                 end: 'top 60%',
                 pin: true,
-                pinSpacing: false,
+                pinSpacing: isLastCard ? true : false,
             })
 
             const yVal = -(cards.length - 1 - index) * 14
@@ -125,7 +125,7 @@ const ListDestination = () => {
                     <CardItem title={item.title} slug={item.slug} background={item.background} desc={item.description} image={item.thumbnail} key={index} />
                 ))}
             </section>
-            <section className="outro h-[30vh] md:h-[40vh]" ref={outroRef} />
+            <section className="outro" ref={outroRef} />
         </section>
     )
 }
