@@ -2,12 +2,15 @@
 
 import { useLenis } from "@/hooks/useLenis"
 import { cn } from "@/lib/utils"
-import { ReactNode } from "react"
+import { ReactNode, useEffect } from "react"
 
 const PageWrapper = ({ children, className }: { children: ReactNode, className?: string }) => {
     useLenis()
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
     return (
-        <main className={cn('min-h-dvh flex flex-col', className)}>
+        <main className={cn('min-h-svh flex flex-col', className)}>
             {children}
         </main>
     )

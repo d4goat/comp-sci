@@ -266,7 +266,7 @@ const GalleryOptionB = ({ images, title }: GalleryProps) => {
     return (
         <section
             ref={containerRef}
-            className="min-h-dvh flex flex-col justify-center py-28 px-6 md:px-20 text-black overflow-hidden"
+            className="min-h-screen flex flex-col justify-center py-28 px-6 md:px-20 text-black overflow-hidden"
         >
             <div className="w-full max-w-6xl mx-auto">
                 <Copy>

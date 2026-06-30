@@ -58,7 +58,7 @@ const MapDestination = ({ latitude, longitude, title, street }: { latitude: numb
     }, { scope: mapRef })
 
     return (
-        <section className="min-h-dvh px-4 sm:px-8 md:px-20 py-16 md:py-28 bg-white flex flex-col">
+        <section className="min-h-screen px-4 sm:px-8 md:px-20 py-16 md:py-28 bg-white flex flex-col">
             <Copy>
                 <h2 className="text-4xl md:text-6xl font-semibold mb-8 md:mb-16">Lokasi {title}</h2>
             </Copy>

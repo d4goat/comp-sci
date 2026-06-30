@@ -238,7 +238,7 @@ const listItem: listItemType[] = [
     longitude: -8.2128,
     latitude: 114.3853,
     street: "Jl. Ikan Cucut No. 27, Banyuwangi",
-    thumbnail: "pantai-marina-1_cylglr",
+    thumbnail: "pantai-marina-2_owzuia",
     image: [
       "pantai-marina-1_cylglr",
       "pantai-marina-2_owzuia",
