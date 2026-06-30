@@ -60,7 +60,7 @@ const MapDestination = ({ latitude, longitude, title, street }: { latitude: numb
     return (
         <section className="min-h-dvh px-4 sm:px-8 md:px-20 py-16 md:py-28 bg-white flex flex-col">
             <Copy>
-                <h2 className="text-5xl md:text-6xl font-semibold mb-8 md:mb-16">Lokasi {title}</h2>
+                <h2 className="text-4xl md:text-6xl font-semibold mb-8 md:mb-16">Lokasi {title}</h2>
             </Copy>
 
             {/* Map */}

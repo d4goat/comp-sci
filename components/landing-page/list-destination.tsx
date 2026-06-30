@@ -62,6 +62,7 @@ const ListDestination = () => {
             const inner = card.querySelector('.card-inner') as Element
             const child = inner.childNodes as NodeListOf<Element>
             gsap.set(child, { opacity: 0, filter: 'blur(10px)', y: 30 })
+            const isLastCard = index === cards.length - 1;
 
             ScrollTrigger.create({
                 trigger: card,
@@ -74,7 +75,7 @@ const ListDestination = () => {
                         filter: 'blur(0px)',
                         duration: 0.75,
                         stagger: 0.15,
-                        ease: 'power2.inOut'
+                        ease: 'power2.Out'
                     })
                 }
             })
@@ -85,7 +86,7 @@ const ListDestination = () => {
                 endTrigger: outroRef.current,
                 end: 'top 60%',
                 pin: true,
-                pinSpacing: false,
+                pinSpacing: isLastCard ? true : false,
             })
 
             const yVal = -(cards.length - 1 - index) * 14
@@ -104,6 +105,7 @@ const ListDestination = () => {
                 })
             }
         })
+        ScrollTrigger.refresh();
     }, { scope: containerRef })
 
     return (
@@ -123,7 +125,7 @@ const ListDestination = () => {
                     <CardItem title={item.title} slug={item.slug} background={item.background} desc={item.description} image={item.thumbnail} key={index} />
                 ))}
             </section>
-            <section className="h-64 md:h-40 outro" ref={outroRef} />
+            <section className="outro" ref={outroRef} />
         </section>
     )
 }

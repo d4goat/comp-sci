@@ -13,7 +13,7 @@ const Hero = ({ title, video }: { title: string, video: string }) => (
         <div className="absolute inset-0 bg-black/60" />
         <div className="relative z-10 min-h-dvh w-full flex justify-center items-center">
             <Copy>
-                <h1 className="font-heading text-6xl md:text-7xl opacity-80 text-background uppercase italic">
+                <h1 className="font-heading text-5xl md:text-7xl opacity-80 text-background uppercase italic">
                     <div className="bg-black py-3 pl-4 pr-7">{title}</div>
                 </h1>
             </Copy>

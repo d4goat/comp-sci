@@ -86,7 +86,7 @@ const Footer = ({ id }: { id: number }) => {
                     View
                 </CursorLabel>
             </div>
-            <div className="container mx-auto flex items-end max-w-5xl justify-between">
+            <div className="container mx-auto flex md:flex-row flex-col items-end max-w-5xl justify-between">
                 <span className="text-muted text-lg">All right reserved &copy; 2026</span>
                 <div className="flex flex-col gap-3">
                     <p className="text-neutral-300 uppercase text-xs">Version</p>

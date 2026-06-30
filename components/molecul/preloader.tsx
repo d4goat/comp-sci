@@ -131,7 +131,7 @@ const Preloader = () => {
             </div>
 
             <div className="preloader-header text-theme">
-                <h1 className="uppercase text-5xl md:text-6xl font-semibold absolute top-3/4 left-1/2 -translate-x-1/2 -translate-y-1/2">Loreast</h1>
+                <h1 className="uppercase text-4xl md:text-5xl lg:text-6xl font-semibold absolute top-3/4 left-1/2 -translate-x-1/2 -translate-y-1/2">Loreast</h1>
 
                 <div className="preloader-counter text-lg absolute top-1/3 sm:top-2/5 left-4/5 sm:left-3/5 -translate-x-1/2 translate-y-1/2 ml-10 overflow-hidden">
                     <p>000</p>

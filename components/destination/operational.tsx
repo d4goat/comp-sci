@@ -49,7 +49,7 @@ const Operational = ({ destinasi }: { destinasi: listItemType }) => {
     return (
         <section className="min-h-dvh py-16 md:py-28 px-4 sm:px-6 md:px-10 lg:px-20 text-gray-800">
             <Copy>
-                <h2 className="text-5xl md:text-6xl font-semibold mb-20 text-center lg:text-left">
+                <h2 className="text-4xl md:text-6xl font-semibold mb-20 text-center lg:text-left">
                     Informasi Operasional
                 </h2>
             </Copy>
