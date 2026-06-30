@@ -139,12 +139,17 @@
   * {
     @apply border-border outline-ring/50;
   }
-  body {
-    @apply bg-background text-foreground;
-  }
   html {
     @apply font-sans;
   }
+  body {
+    @apply bg-background text-foreground;
+    overflow-x: hidden;
+  }
+  /* Remove 300ms tap delay on touch devices */
+  /* a, button, [role="button"] {
+    touch-action: manipulation;
+  } */
   .maplibregl-popup-content {
     @apply bg-transparent! shadow-none! p-0! rounded-none!;
   }
@@ -216,7 +221,12 @@ section p .block-line-wrapper {
   clip-path: polygon(20% 20%, 80% 20%, 80% 80%, 20% 80%);
   will-change: transform, clip-path;
 }
-
+/* .preloader-counter {
+  position: absolute;
+  top: -1.5rem;
+  left: calc(100% + 1.5rem);
+  overflow: hidden;
+} */
 .char, .word, .preloader-counter p{
   transform: translateY(100%);
   will-change: transform;

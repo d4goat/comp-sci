@@ -1,11 +1,12 @@
 'use client'
 
-import Contact from "@/components/landing-page/trip-planner";
+import TripPlanner from "@/components/landing-page/trip-planner";
 import { Explain } from "@/components/landing-page/explain";
 import Hero from "@/components/landing-page/hero";
 import { ListDestination } from "@/components/landing-page/list-destination";
 import { PageWrapper } from "@/components/page-wrapper";
 import MouseTrail from "@/components/atom/mouse-trail";
+import { Footer } from "@/components/landing-page/footer";
 
 export default function Page() {
   return (
@@ -14,7 +15,8 @@ export default function Page() {
       <Hero />
       <Explain />
       <ListDestination />
-      <Contact />
+      <TripPlanner />
+      <Footer />
     </PageWrapper>
   )
 }

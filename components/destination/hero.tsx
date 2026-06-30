@@ -1,9 +1,9 @@
 import Copy from "../molecul/copy";
 
-const Hero = ({ title }: { title: string }) => (
+const Hero = ({ title, video }: { title: string, video: string }) => (
     <section className="">
         <div className="absolute inset-0 w-full h-full [&_.cld-video-player]:w-full! [&_.cld-video-player]:h-full! [&_video]:w-full! [&_video]:h-full! [&_video]:object-cover!">
-            <video src="https://res.cloudinary.com/divkjbs7y/video/upload/v1782464446/bangsring_ftas4h.mp4"
+            <video src={video}
                 autoPlay
                 muted
                 playsInline

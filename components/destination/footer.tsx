@@ -5,8 +5,8 @@ import { CursorCircle, CursorLabel } from "../molecul/cursor-label";
 import { MagneticButton } from "../molecul/magnetic";
 import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
-import { getNextListItem } from "@/data";
-import { notFound } from "next/navigation";
+import { getNextListItem, getNextListItemByCategory } from "@/data";
+import { notFound, useSearchParams } from "next/navigation";
 import { CldImage } from "next-cloudinary";
 import Image from "next/image";
 import { Separator } from "../ui/separator";
@@ -38,7 +38,13 @@ const Footer = ({ id }: { id: number }) => {
     const label = useRef<HTMLDivElement>(null)
     const { handlePointerEnter, handlePointerLeave, moveItems, item: { active } } = useFollowPointer({ cursor, label, modal })
 
-    const nextItem = getNextListItem(id)
+    const search = useSearchParams()
+    const category = search.get('category')
+
+    const { item: nextItem, stayInCategory } = category ? getNextListItemByCategory(id, category) : { item: getNextListItem(id), stayInCategory: false }
+
+    const nextHref = `/destination/${nextItem.slug}${category && stayInCategory ? `?category=${category}` : ''
+        }`
 
     if (!nextItem) return notFound();
     return (
@@ -48,14 +54,14 @@ const Footer = ({ id }: { id: number }) => {
                     onPointerEnter={() => handlePointerEnter(nextItem.id)}
                     onPointerLeave={() => handlePointerLeave(nextItem.id)}
                     onPointerMove={({ clientX, clientY }) => moveItems(clientX, clientY)}
-                    href={`/destination/${nextItem.slug}`}
+                    href={nextHref}
                     className="group overflow-hidden flex flex-col items-center relative gap-4 text-primary w-full"
                 >
                     <span className="next-node text-lg text-neutral-400 group-hover:text-white transition-colors duration-300">
                         Next Destination
                     </span>
 
-                    <h2 className="next-node text-4xl md:text-5xl lg:text-7xl font-semibold text-muted group-hover:text-neutral-500 font-heading transition-all duration-300">
+                    <h2 className="next-node text-3xl md:text-4xl lg:text-7xl font-semibold text-muted group-hover:text-neutral-500 font-heading transition-all duration-300">
                         {nextItem.title}
                     </h2>
 
@@ -63,14 +69,14 @@ const Footer = ({ id }: { id: number }) => {
                     <div
                         className="next-node w-3/4 lg:w-1/3 bg-neutral-800 px-7 lg:py-6 absolute top-28 overflow-hidden md:translate-y-15 group-hover:-translate-y-6 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]">
                         <div className="relative h-42 lg:h-42 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]">
-                            {/* <CldImage
+                            <CldImage
                                 src={nextItem.thumbnail}
                                 alt={nextItem.title}
                                 fill
                                 sizes="(max-width: 1024px) 75vw, 33vw"
                                 className="object-contain rounded-xl"
-                            /> */}
-                            <Image src={nextItem.thumbnail} alt={nextItem.title} fill className="object-contain rounded-xl" sizes="(max-width: 1024px) 75vw, 33vw" />
+                            />
+                            {/* <Image src={nextItem.thumbnail} alt={nextItem.title} fill className="object-contain rounded-xl" sizes="(max-width: 1024px) 75vw, 33vw" /> */}
                         </div>
                     </div>
                     <Separator className="mt-36 lg:mt-30 bg-neutral-500!" />

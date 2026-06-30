@@ -1,16 +1,30 @@
 'use client'
 
 import Copy from "../molecul/copy"
-import { Clock, Ticket, AlertCircle, CheckCircle2, Home } from "lucide-react"
+import { Clock, Ticket, Home, Info } from "lucide-react"
 import { gsap } from "@/lib/gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { useGSAP } from "@gsap/react"
 import { useRef } from "react"
 import { Button } from "../ui/button"
 import Link from "next/link"
+import { listItemType } from "@/data"
 
-const Operational = () => {
+const Operational = ({ destinasi }: { destinasi: listItemType }) => {
     const cardContainerRef = useRef<HTMLDivElement>(null)
+
+    // Cek status buka/tutup berdasarkan jam saat ini vs openTime
+    const isOpenNow = () => {
+        const now = new Date()
+        const [openH, openM] = destinasi.openTime.open.split(":").map(Number)
+        const [closeH, closeM] = destinasi.openTime.close.split(":").map(Number)
+        const nowMinutes = now.getHours() * 60 + now.getMinutes()
+        const openMinutes = openH * 60 + openM
+        const closeMinutes = closeH * 60 + closeM
+        return nowMinutes >= openMinutes && nowMinutes <= closeMinutes
+    }
+    const buka = isOpenNow()
+
     useGSAP(() => {
         const cards = gsap.utils.toArray('.card') as Element[]
         gsap.set(cards, { opacity: 0, y: 30, filter: 'blur(10px)' })
@@ -31,38 +45,36 @@ const Operational = () => {
             }
         })
     }, [])
+
     return (
-        // Menggunakan bg off-white yang bersih agar card putih lebih menonjol
-        <section className="min-h-dvh py-28 px-10 md:px-20 bg-[#F8F9FA] text-gray-800">
+        <section className="min-h-dvh py-16 md:py-28 px-4 sm:px-6 md:px-10 lg:px-20 text-gray-800">
             <Copy>
                 <h2 className="text-5xl md:text-6xl font-semibold mb-20 text-center lg:text-left">
                     Informasi Operasional
                 </h2>
             </Copy>
 
-            {/* Grid Container untuk Cards */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" ref={cardContainerRef}>
 
                 {/* 1. Jam Operasional Card */}
                 <div className="card bg-white p-8 rounded-3xl shadow-sm border border-gray-100 flex flex-col gap-6 hover:shadow-md transition-shadow">
-                    {/* Aksen warna Ocean */}
                     <div className="w-14 h-14 bg-golden rounded-2xl flex items-center justify-center text-[#4A7C82]">
                         <Clock size={28} />
                     </div>
                     <div>
-                        <h3 className="text-2xl font-bold mb-5">Jam Operasional</h3>
+                        <h3 className="text-2xl font-bold mb-5">Jam &amp; Status Operasional</h3>
                         <ul className="space-y-4 text-gray-600 text-sm md:text-base">
                             <li className="flex justify-between border-b border-gray-50 pb-2">
-                                <span>Senin - Jumat</span>
-                                <span className="font-semibold text-gray-800">08:00 - 16:00</span>
-                            </li>
-                            <li className="flex justify-between border-b border-gray-50 pb-2">
-                                <span>Sabtu - Minggu</span>
-                                <span className="font-semibold text-gray-800">07:00 - 17:00</span>
+                                <span>Jam Operasional</span>
+                                <span className="font-semibold text-gray-800">
+                                    {destinasi.openTime.open} - {destinasi.openTime.close} WIB
+                                </span>
                             </li>
                             <li className="flex justify-between pt-1">
-                                <span>Hari Libur Nasional</span>
-                                <span className="font-semibold text-[#4A7C82]">Tetap Buka</span>
+                                <span>Status</span>
+                                <span className={`font-semibold ${buka ? "text-green-600" : "text-red-500"}`}>
+                                    {buka ? "Buka" : "Tutup"}
+                                </span>
                             </li>
                         </ul>
                     </div>
@@ -70,59 +82,55 @@ const Operational = () => {
 
                 {/* 2. Harga Tiket Card */}
                 <div className="card bg-white p-8 rounded-3xl shadow-sm border border-gray-100 flex flex-col gap-6 hover:shadow-md transition-shadow">
-                    {/* Aksen warna Sunset */}
                     <div className="w-14 h-14 bg-golden rounded-2xl flex items-center justify-center text-[#DDA15E]">
                         <Ticket size={28} />
                     </div>
                     <div>
                         <h3 className="text-2xl font-bold mb-5">Harga Tiket Masuk</h3>
                         <ul className="space-y-4 text-gray-600 text-sm md:text-base">
-                            <li className="flex justify-between border-b border-gray-50 pb-2">
-                                <span>Wisatawan Domestik</span>
-                                <span className="font-semibold text-gray-800">Rp 15.000</span>
-                            </li>
-                            <li className="flex justify-between border-b border-gray-50 pb-2">
-                                <span>Wisatawan Mancanegara</span>
-                                <span className="font-semibold text-gray-800">Rp 150.000</span>
-                            </li>
-                            <li className="flex justify-between pt-1">
-                                <span>Parkir Kendaraan</span>
-                                <span className="font-semibold text-gray-800">Rp 5.000</span>
-                            </li>
+                            {destinasi.htm.map((item, i) => (
+                                <li
+                                    key={i}
+                                    className={`flex justify-between ${i !== destinasi.htm.length - 1 ? "border-b border-gray-50 pb-2" : "pt-1"
+                                        }`}
+                                >
+                                    <span>{item.label}</span>
+                                    <span className="font-semibold text-gray-800 text-right max-w-[60%]">
+                                        {item.price}
+                                    </span>
+                                </li>
+                            ))}
                         </ul>
-                        <p className="text-xs text-gray-400 mt-5 italic">*Harga tiket dapat berubah sewaktu-waktu sesuai kebijakan pengelola.</p>
+                        <p className="text-xs text-gray-400 mt-5 italic">
+                            *Harga tiket dapat berubah sewaktu-waktu sesuai kebijakan pengelola.
+                        </p>
                     </div>
                 </div>
-
-                {/* 3. Aturan & Ketentuan Card */}
                 <div className="card bg-white p-8 rounded-3xl shadow-sm border border-gray-100 flex flex-col gap-6 hover:shadow-md transition-shadow">
-                    {/* Aksen warna Forest */}
-                    <div className="w-14 h-14 bg-forest rounded-2xl flex items-center justify-center text-text">
-                        <AlertCircle size={28} />
+                    <div className="w-14 h-14 bg-golden rounded-2xl flex items-center justify-center text-[#DDA15E]">
+                        <Info size={28} />
                     </div>
                     <div>
-                        <h3 className="text-2xl font-bold mb-5">Aturan Pengunjung</h3>
-                        <ul className="space-y-4 text-gray-600 text-sm md:text-base">
-                            <li className="flex gap-3 items-start">
-                                <CheckCircle2 size={20} className="text-text shrink-0 mt-0.5" />
-                                <span>Wajib menjaga kebersihan dan membuang sampah pada tempat yang disediakan.</span>
-                            </li>
-                            <li className="flex gap-3 items-start">
-                                <CheckCircle2 size={20} className="text-text shrink-0 mt-0.5" />
-                                <span>Dilarang merusak fasilitas, mencoret bebatuan, atau merusak vegetasi alam.</span>
-                            </li>
-                            <li className="flex gap-3 items-start">
-                                <CheckCircle2 size={20} className="text-text shrink-0 mt-0.5" />
-                                <span>Patuhi batas aman yang ditentukan oleh penjaga (terutama di area pantai dan kawah).</span>
-                            </li>
+                        <h3 className="text-2xl font-bold mb-5">Tips Berkunjung</h3>
+                        <ul className="space-y-2 text-gray-600 text-sm md:text-base">
+                            {destinasi.visitTips.map((item, i) => (
+                                <li
+                                    key={i}
+                                    className={`flex items-start gap-3
+                                        }`}
+                                >
+                                    <span className="w-1 h-1 bg-gray-500 rounded-full mt-3"></span>
+                                    <span>{item}</span>
+                                </li>
+                            ))}
                         </ul>
                     </div>
                 </div>
-
             </div>
+
             <div className="flex justify-center mt-10">
                 <Link href={'/'}>
-                    <Button size={'2xl'} variant={'outline'} className=""><Home /> Kembali Ke Halaman Utama</Button>
+                    <Button size={'2xl'} variant={'outline'}><Home /> Kembali Ke Halaman Utama</Button>
                 </Link>
             </div>
         </section>

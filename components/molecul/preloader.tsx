@@ -1,12 +1,13 @@
 'use client'
 
 import Image from "next/image"
-import gsap from "gsap"
+import { gsap } from "@/lib/gsap"
 import { SplitText } from "gsap/SplitText"
-import { CustomEase } from "gsap/all"
 import { useGSAP } from "@gsap/react"
 import { imageList } from "@/data"
 import { useState, useEffect } from "react"
+import { CldImage } from "next-cloudinary"
+import { useScrollLock } from "@/hooks/useScrollLock"
 
 // Module-level flag: bertahan hidup selama browser session (client-side transitions),
 // namun langsung ter-reset (kembali false) pada setiap page refresh (full reload).
@@ -14,6 +15,7 @@ let preloaderHasShown = false
 
 const Preloader = () => {
     const [shouldShow, setShouldShow] = useState(false)
+    const { lock, unlock } = useScrollLock()
 
     useEffect(() => {
         if (!preloaderHasShown) {
@@ -25,10 +27,7 @@ const Preloader = () => {
     useGSAP(() => {
         if (!shouldShow) return
 
-        gsap.registerPlugin(SplitText, CustomEase)
-        CustomEase.create('hop', "0.8, 0, 0.2, 1")
-        CustomEase.create('hop2', "0.9, 0, 0.1, 1")
-
+        lock()
         const splitText = (selector: Element | string, type: 'words' | 'chars' | 'lines', className: string, mask = true) => {
             return SplitText.create(selector, {
                 type: type,
@@ -38,11 +37,9 @@ const Preloader = () => {
         }
 
         const preloaderHeaderSplit = splitText('.preloader-header h1', 'chars', 'char')
-        const testCopySplit = splitText('.test-copy', 'chars', 'char')
         void preloaderHeaderSplit
-        void testCopySplit
 
-        const preloadingImgInitRotation = [7.5, -2.5, -10, 12.5, -5, 5]
+        const preloadingImgInitRotation = [7.5, -2.5, -10, 12.5, -5, 5, 10, -7.5]
         gsap.set('.preloader-img', {
             rotate: (i) => preloadingImgInitRotation[i]
         })
@@ -118,8 +115,8 @@ const Preloader = () => {
             clipPath: 'polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)',
             duration: 1,
             ease: 'hop2',
+            onComplete: () => unlock()
         }, 4.35)
-
 
     }, [shouldShow])
 
@@ -129,17 +126,15 @@ const Preloader = () => {
         <div className="preloader bg-neutral-900 fixed top-0 left-0 w-full min-h-svh overflow-hidden z-50">
             <div className="preloader-images absolute top-0 left-0 w-full h-full">
                 {imageList.map((item, index) => (
-                    <Image src={item} key={index} alt={`Preloader ${index}`} width={250} height={400} className="object-cover preloader-img" />
+                    <CldImage src={item} key={index} alt={`Preloader ${index}`} width={250} height={400} className="object-cover w-60 h-60 preloader-img" />
                 ))}
             </div>
 
             <div className="preloader-header text-theme">
-                <h1 className="uppercase text-6xl font-semibold absolute top-3/4 left-1/2 -translate-x-1/2 -translate-y-1/2">Loreast</h1>
+                <h1 className="uppercase text-5xl md:text-6xl font-semibold absolute top-3/4 left-1/2 -translate-x-1/2 -translate-y-1/2">Loreast</h1>
 
-                <div className="absolute top-2/5 left-3/5 -translate-x-1/2 translate-y-1/2 ml-10">
-                    <div className="preloader-counter text-lg">
-                        <p>000</p>
-                    </div>
+                <div className="preloader-counter text-lg absolute top-1/3 sm:top-2/5 left-4/5 sm:left-3/5 -translate-x-1/2 translate-y-1/2 ml-10 overflow-hidden">
+                    <p>000</p>
                 </div>
             </div>
         </div>

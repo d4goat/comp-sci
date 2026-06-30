@@ -26,11 +26,11 @@ const Hero = () => {
             </div>
             <div className="absolute inset-0 bg-black/50" />
 
-            <div className="relative z-10 min-h-dvh w-full flex justify-center items-center">
+            <div className="relative z-10 min-h-dvh w-full flex justify-center items-center px-4">
                 <Copy>
-                    <h1 className="font-heading text-8xl text-background uppercase flex flex-col justify-center items-center italic">
+                    <h1 className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-background uppercase flex flex-col justify-center items-center italic gap-2">
                         <span className="tracking-wide">journey with</span>
-                        <div className="bg-black py-3 pl-5 pr-8">loreast</div>
+                        <div className="bg-black py-2 px-5 sm:py-3 sm:pl-5 sm:pr-8">loreast</div>
                     </h1>
                 </Copy>
             </div>
