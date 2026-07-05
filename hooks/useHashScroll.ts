@@ -40,6 +40,8 @@ export function useHashScroll() {
         if (scrollParam) {
           const newUrl = window.location.pathname + `#${scrollParam}`;
           window.history.replaceState(null, "", newUrl);
+          // Reset scroll ke 0 secara instan agar smooth scroll dimulai dari paling atas
+          lenis.scrollTo(0, { immediate: true });
         }
         timerId = setTimeout(() => {
           lenis.start();

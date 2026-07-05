@@ -2,11 +2,13 @@
 import { type ReactNode, useEffect, useRef } from "react"
 import { TransitionRouter } from "next-transition-router"
 import gsap from "gsap";
+import { useLenis } from "@/hooks/useLenis"
 
 const ROWS = 4;
 const COLS = 16;
 
 export default function TransitionProviders({ children }: { children: ReactNode }) {
+    useLenis()
     const transitionGridRef = useRef<HTMLDivElement>(null)
     const blockRef = useRef<HTMLDivElement[]>([])
 
