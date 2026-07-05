@@ -16,6 +16,7 @@ interface listItemType {
   htm: { label: string; price: string }[];
   visitTips: string[];
   video: string;
+  mapsUrl: string;
 }
 
 type NextItemResult = {
@@ -32,8 +33,8 @@ const listItem: listItemType[] = [
     description: `Kawah Ijen adalah salah satu destinasi wisata alam paling memesona yang terletak di perbatasan Kabupaten Banyuwangi dan Kabupaten Bondowoso, Jawa Timur. Berada di ketinggian 2.386 meter di atas permukaan laut, kawah ini merupakan danau air asam terbesar di dunia yang memancarkan warna hijau toska yang sangat memukau.`,
     additionalDesc: `Daya tarik utama yang membuat Kawah Ijen mendunia adalah fenomena Api Biru (Blue Fire), sebuah keajaiban alam langka yang hanya ada dua di dunia. Api biru ini terbentuk dari gas belerang bertekanan tinggi yang keluar dari celah batuan dengan suhu mencapai 600°C, lalu menyala saat bersentuhan dengan udara. Fenomena magis ini hanya dapat dilihat pada dini hari sebelum matahari terbit.`,
     notes: `Selain keindahan alamnya, Kawah Ijen juga menjadi tempat mata pencaharian bagi para penambang belerang tradisional. Mereka dengan tangguh memikul puluhan kilogram bongkahan belerang kuning dari dasar kawah melintasi medan yang curam dan berasap tebal.`,
-    longitude: -8.058,
-    latitude: 114.242,
+    latitude: -8.05856,
+    longitude: 114.24246,
     street:
       "Desa Tamansari, Kecamatan Licin, Kabupaten Banyuwangi, Jawa Timur 68454",
     thumbnail: "kawah-2_djtlzq",
@@ -51,6 +52,7 @@ const listItem: listItemType[] = [
     ],
     video:
       "https://res.cloudinary.com/divkjbs7y/video/upload/v1782722169/KAWAH_IJEN_1_nxtrhr.mp4",
+    mapsUrl: "https://maps.app.goo.gl/D9AmHmn2mujaQ1Ff6",
   },
   {
     id: 2,
@@ -63,16 +65,16 @@ const listItem: listItemType[] = [
       "Savana Bekol seluas 10.000 hektar menjadi jantung dari taman nasional ini. Saat musim kemarau, savana ini berubah menjadi hamparan padang cokelat keemasan yang menawan. Kawasan ini menjadi habitat asli bagi kawanan banteng Jawa, kerbau liar, rusa, hingga burung merak yang sering menampakkan diri di pagi dan sore hari saat mereka keluar mencari makan.",
     notes:
       "Selain savana, pengunjung bisa mengunjungi Pantai Bama yang memiliki hutan mangrove indah dan spot snorkeling. Terdapat pula situs sejarah berupa Gua Jepang peninggalan Perang Dunia II di area Batangan. Perlu diingat bahwa seluruh kawasan ini dilindungi, sehingga dilarang keras menerbangkan drone tanpa izin khusus untuk menjaga ketenangan satwa liar.",
-    longitude: -7.7917,
-    latitude: 114.3722,
+    latitude: -7.831066570475814,
+    longitude: 114.3874517202389,
     street: "Jl. Raya Banyuwangi - Situbondo Km. 35, Banyuputih, Situbondo",
     thumbnail: "baluran-2_qzquoh",
     image: ["baluran-1_jys8fw", "baluran-2_qzquoh", "baluran-3_hhgizs"],
     category: "Forest",
     openTime: { open: "07:30", close: "16:00" },
     htm: [
-      { label: "Domestik", price: "Rp21.000 - Rp31.000" },
-      { label: "Asing", price: "Rp155.000 - Rp205.000" },
+      { label: "Domestik", price: "Rp16.500 - Rp18.500" },
+      { label: "Asing", price: "Rp150.000 - Rp225.000" },
     ],
     visitTips: [
       "Gunakan kendaraan pribadi",
@@ -81,6 +83,7 @@ const listItem: listItemType[] = [
     ],
     video:
       "https://res.cloudinary.com/divkjbs7y/video/upload/v1782721857/taman_nasional_baluran_domnfv.mp4",
+    mapsUrl: "https://maps.app.goo.gl/jePP2GQ8G6HXzcDQ8",
   },
   {
     id: 3,
@@ -93,8 +96,8 @@ const listItem: listItemType[] = [
       "Terdapat lebih dari 800 pohon trembesi tua yang keliling batangnya mencapai beberapa meter. Awalnya kawasan ini merupakan tempat penimbunan kayu milik Perhutani, namun kini telah bertransformasi menjadi ruang terbuka hijau yang sangat teduh. Akar-akar pohon yang menonjol dan lumut yang menyelimuti batang memberikan kesan hutan purba yang sangat eksotis bagi para fotografer.",
     notes:
       "Kawasan ini menjadi favorit untuk wisata keluarga karena dilengkapi dengan fasilitas seperti delman, penyewaan ATV, dan kafe-kafe kecil di bawah pohon. Udara di sini terasa sangat segar karena pohon trembesi dikenal sebagai penyerap karbon yang sangat efektif. Pastikan untuk menjaga kebersihan dan tidak merusak kulit pohon selama berada di dalam kawasan.",
-    longitude: -8.4158,
-    latitude: 114.2183,
+    latitude: -8.432737009830108,
+    longitude: 114.22656196726852,
     street: "Desa Purwosari, Benculuk, Kec. Cluring, Banyuwangi",
     thumbnail: "djawatan-3_wtlefc",
     image: ["djawatan-1_wgvbba", "djawatan-2_g4rfhk", "djawatan-3_wtlefc"],
@@ -106,7 +109,8 @@ const listItem: listItemType[] = [
       "Tersedia wahana ATV dan delman",
     ],
     video:
-      "https://res.cloudinary.com/divkjbs7y/video/upload/v1782721857/taman_nasional_baluran_domnfv.mp4",
+      "https://res.cloudinary.com/divkjbs7y/video/upload/v1783007942/lv_0_20260702225440_a4vvmw.mp4",
+    mapsUrl: "https://maps.app.goo.gl/NqdfMC2DMmVCF8149",
   },
   {
     id: 4,
@@ -119,8 +123,8 @@ const listItem: listItemType[] = [
       "Nama 'Pulau Merah' diambil dari warna tanah bukit tersebut yang tampak kemerahan saat terkena cahaya matahari. Saat air laut surut, pengunjung bahkan bisa berjalan kaki menyeberangi jalur pasir menuju pulau kecil tersebut. Ombak di pantai ini memiliki karakteristik yang stabil, menjadikannya lokasi favorit bagi peselancar internasional maupun pemula untuk mengasah kemampuan surfing.",
     notes:
       "Selain sebagai spot olahraga air, pantai ini memiliki nilai spiritual dengan adanya Pura Tawang Alun di dekat area parkir. Waktu terbaik untuk menikmati keindahan maksimal adalah sore hari saat matahari terbenam (sunset), di mana langit akan memancarkan warna jingga kemerahan yang sangat kontras dengan perbukitan merah, memberikan pengalaman estetik yang tak terlupakan.",
-    longitude: -8.5992,
-    latitude: 114.0256,
+    latitude: -8.59948199728053,
+    longitude: 114.02942841384646,
     street: "Dusun Pancer, Desa Sumberagung, Kec. Pesanggaran, Banyuwangi",
     thumbnail: "images_3_hj37sp",
     image: ["images_3_hj37sp", "11-2_ybksrx", "images_4_prtoow"],
@@ -130,6 +134,7 @@ const listItem: listItemType[] = [
     visitTips: ["Sewa papan surfing tersedia", "Gunakan jalan utama nasional"],
     video:
       "https://res.cloudinary.com/divkjbs7y/video/upload/v1782721864/Pantai_Pulau_Merah_vdrmpz.mp4",
+    mapsUrl: "https://maps.app.goo.gl/YzaBwxFey8zUTZHn8",
   },
   {
     id: 5,
@@ -142,8 +147,8 @@ const listItem: listItemType[] = [
       "Alas Purwo memiliki Pantai Plengkung atau G-Land, salah satu pantai dengan ombak terbaik dunia untuk berselancar. Selain sisi bahari, terdapat Savana Sadengan yang menjadi pusat pengamatan satwa liar seperti banteng Jawa, merak, dan kawanan rusa di habitat asli mereka. Keseimbangan ekosistem di kawasan ini masih sangat terjaga berkat statusnya sebagai cagar biosfer dunia.",
     notes:
       "Masyarakat lokal meyakini kawasan ini sebagai hutan yang menyimpan nilai spiritual tinggi dan dulunya merupakan pelarian terakhir masyarakat Majapahit. Karena areanya sangat luas dan aksesnya cukup menantang, pengunjung sangat disarankan menggunakan kendaraan pribadi yang tangguh. Sinyal seluler di dalam area sangat minim, sehingga siapkan peta fisik atau unduh peta offline sebelum berangkat.",
-    longitude: -8.6653,
-    latitude: 114.3411,
+    latitude: -8.681888265869429,
+    longitude: 114.45305751687772,
     street: "Kec. Tegaldlimo & Purwoharjo, Banyuwangi",
     thumbnail: "images_xg4igo",
     image: ["images_xg4igo", "images_1_zjpp0i", "alas-purwo_yvznz6"],
@@ -160,6 +165,7 @@ const listItem: listItemType[] = [
     ],
     video:
       "https://res.cloudinary.com/divkjbs7y/video/upload/v1782721862/TamNas_Alas_Purwo_ev29dw.mp4",
+    mapsUrl: "https://maps.app.goo.gl/ttCJ1LVuqf5tPqpXA",
   },
   {
     id: 6,
@@ -172,8 +178,8 @@ const listItem: listItemType[] = [
       "Warna hijau toska yang jernih ini menjadi daya tarik utama, menciptakan kontras yang indah dengan pasir putih bersih. Tidak jauh dari bibir pantai, terdapat Air Terjun Bidadari setinggi 8 meter. Air terjun ini memberikan sentuhan kesegaran tersendiri bagi pengunjung yang ingin membilas air asin setelah berenang, sekaligus menjadi latar belakang foto yang sangat alami.",
     notes:
       "Akses menuju lokasi membutuhkan sedikit petualangan; pengunjung dapat memilih jalur trekking hutan sejauh 1 km untuk menikmati pemandangan atau menyewa perahu dari Pantai Rajegwesi. Karena lokasinya di dalam kawasan lindung, tidak ada warung permanen di area pantai. Disarankan membawa bekal yang cukup dan selalu menjaga kebersihan demi kelestarian ekosistem sekitar.",
-    longitude: -8.5639,
-    latitude: 113.9431,
+    latitude: -8.563429789959365,
+    longitude: 113.9240106532442,
     street: "Dusun Krajan, Sarongan, Kec. Pesanggaran, Banyuwangi",
     thumbnail: "t_5d17417397ba7-960x636_iahuf4",
     image: [
@@ -187,6 +193,7 @@ const listItem: listItemType[] = [
     visitTips: ["Trekking hutan 1 km atau naik perahu", "Bawa bekal sendiri"],
     video:
       "https://res.cloudinary.com/divkjbs7y/video/upload/v1782721878/Teluk_Ijo_g3a14w.mp4",
+    mapsUrl: "https://maps.app.goo.gl/JmFxzuwYjY5scZJE6",
   },
   {
     id: 7,
@@ -199,8 +206,8 @@ const listItem: listItemType[] = [
       "Daya tarik utamanya adalah Rumah Apung, di mana pengunjung dapat menikmati pengalaman snorkeling dengan terumbu karang yang sangat sehat. Pengalaman yang paling dicari adalah berenang langsung bersama hiu jinak dalam keramba konservasi yang aman, didampingi oleh pemandu profesional. Tersedia juga kapal kaca bagi mereka yang ingin melihat keindahan bawah laut tanpa harus basah.",
     notes:
       "Kawasan ini menjadi gerbang utama untuk menyeberang ke Pulau Tabuhan atau Pulau Menjangan. Karena akses jalan masuk yang cukup sempit, rombongan dengan bus besar disarankan untuk berhenti di area parkir luar dan menggunakan shuttle atau kendaraan kecil. Dukungan Anda terhadap tiket masuk sangat berarti bagi keberlanjutan program pelestarian terumbu karang dan ekonomi nelayan setempat.",
-    longitude: -8.0569,
-    latitude: 114.4253,
+    latitude: -8.054553293450311,
+    longitude: 114.43097562859892,
     street: "Desa Bangsring, Kec. Wongsorejo, Banyuwangi",
     thumbnail: "bangsring-1_soky8j",
     image: [
@@ -223,6 +230,7 @@ const listItem: listItemType[] = [
     ],
     video:
       "https://res.cloudinary.com/divkjbs7y/video/upload/v1782464446/bangsring_ftas4h.mp4",
+    mapsUrl: "https://maps.app.goo.gl/XFY3vTvWNSnuFoZm9",
   },
   {
     id: 8,
@@ -235,8 +243,8 @@ const listItem: listItemType[] = [
       "Ikon utama di sini adalah Boom Bridge, jembatan melengkung bergaya spiral yang membentang di atas perairan dan menjadi lokasi favorit wisatawan untuk berswafoto. Kawasan ini sering menjadi panggung utama perhelatan besar Banyuwangi, seperti Festival Gandrung Sewu yang melibatkan ribuan penari, serta ajang internasional seperti Banyuwangi Beach Jazz Festival yang menarik banyak audiens.",
     notes:
       "Marina ini memiliki fasilitas yang sangat lengkap dan akses yang sangat ramah bagi semua kalangan. Anda bisa menikmati sunrise di pagi hari atau sunset yang dramatis saat senja tiba di satu lokasi yang sama. Karena lokasinya berada di tengah kota, pantai ini sangat mudah dijangkau dan menjadi pilihan tepat jika Anda hanya memiliki waktu singkat untuk berwisata di Banyuwangi.",
-    longitude: -8.2128,
-    latitude: 114.3853,
+    latitude: -8.212158564312414,
+    longitude: 114.38550416593793,
     street: "Jl. Ikan Cucut No. 27, Banyuwangi",
     thumbnail: "pantai-marina-2_owzuia",
     image: [
@@ -255,10 +263,11 @@ const listItem: listItemType[] = [
     ],
     video:
       "https://res.cloudinary.com/divkjbs7y/video/upload/v1782464356/pantai-boom_gi9tpn.mp4",
+    mapsUrl: "https://maps.app.goo.gl/4W7LXuaDJ22kocgS7",
   },
 ];
 
-const imageList = listItem.map((item) => item.thumbnail);
+const imageList = listItem.map((item) => item.thumbnail).toReversed();
 
 const getItemBySlug = (slug: string) => {
   return listItem.find((item) => item.slug === slug);
@@ -293,6 +302,13 @@ const getNextListItemByCategory = (
   return { item: nextItem, stayInCategory: true };
 };
 
+const NAV_ITEMS = [
+  { id: 1, label: "Home", url: "/" },
+  { id: 2, label: "About", url: "/#about" },
+  { id: 3, label: "List Destination", url: "/#list-destination" },
+  { id: 4, label: "Trip Planner", url: "/#trip-planner" },
+];
+
 export {
   type listItemType,
   listItem,
@@ -301,4 +317,5 @@ export {
   imageList,
   getItemByCategory,
   getNextListItemByCategory,
+  NAV_ITEMS,
 };

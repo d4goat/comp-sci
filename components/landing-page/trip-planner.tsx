@@ -2,7 +2,8 @@
 import { useState, useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "@/lib/gsap";
-import { listItem } from "@/data";
+import { useTranslatedData } from "@/hooks/useTranslatedData";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Button } from "../ui/button";
@@ -12,6 +13,9 @@ import { CldImage } from "next-cloudinary";
 const categories = ["All", "Volcanic", "Forest", "Ocean", "Sunset"];
 
 export default function TripPlanner() {
+    const { listItem } = useTranslatedData();
+    const t = useTranslations("TripPlanner");
+    const tCat = useTranslations("Categories");
     const [activeFilter, setActiveFilter] = useState("All");
     const containerRef = useRef(null);
 
@@ -21,7 +25,6 @@ export default function TripPlanner() {
             ? listItem
             : listItem.filter((w) => w.category === activeFilter);
 
-    // Animasi GSAP setiap kali state activeFilter berubah
     useGSAP(() => {
         const cards = gsap.utils.toArray('.wisata-card') as Element[];
 
@@ -45,8 +48,8 @@ export default function TripPlanner() {
     }, { dependencies: [activeFilter], scope: containerRef });
 
     return (
-        <section ref={containerRef} className="py-16 md:py-20 px-4 sm:px-6 md:px-8 bg-white text-gray-800">
-            <h2 className="text-3xl font-bold mb-8 text-center">Tentukan Vibes Liburanmu</h2>
+        <section id="trip-planner" ref={containerRef} className="py-16 md:py-20 px-4 sm:px-6 md:px-8 bg-white text-gray-800">
+            <h2 className="text-3xl font-bold mb-8 text-center">{t("title")}</h2>
 
             {/* Filter Buttons */}
             <div className="flex flex-wrap justify-center gap-2 sm:gap-3 md:gap-4 mb-10 md:mb-12">
@@ -58,7 +61,7 @@ export default function TripPlanner() {
                         className="rounded-full"
                         size={'xl'}
                     >
-                        {cat}
+                        {cat === "All" ? t("filterAll") : tCat(cat)}
                     </Button>
                 ))}
             </div>
@@ -80,7 +83,7 @@ export default function TripPlanner() {
                             />
                         </div>
                         <div className="p-6">
-                            <span className="text-sm font-semibold uppercase opacity-60">{item.category}</span>
+                            <span className="text-sm font-semibold uppercase opacity-60">{tCat(item.category)}</span>
                             <h3 className="text-xl font-bold">{item.title}</h3>
                         </div>
                     </Link>

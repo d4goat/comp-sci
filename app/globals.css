@@ -10,7 +10,9 @@
   --font-sans: var(--font-sans);
   --font-mono: var(--font-bebas);
   --font-mona: var(--font-mona);
+  --font-open: var(--font-open);
   --font-heading: var(--font-pp-neue);
+  --font-simple: var(--font-simple);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -64,6 +66,8 @@
   --color-golden: #F5EBE0;
   --color-volcanic: #E2E7E6;
   --transition-grid: #f2f0e6;
+  --color-sage: #acb087;
+  --color-moss: #8c916c;
 }
 
 :root {
@@ -230,4 +234,8 @@ section p .block-line-wrapper {
 .char, .word, .preloader-counter p{
   transform: translateY(100%);
   will-change: transform;
+}
+
+body.scroll-locked {
+  overflow: hidden !important;
 }

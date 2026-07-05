@@ -1,6 +1,5 @@
 'use client'
 
-import Image from "next/image"
 import { gsap } from "@/lib/gsap"
 import { SplitText } from "gsap/SplitText"
 import { useGSAP } from "@gsap/react"
@@ -9,8 +8,6 @@ import { useState, useEffect } from "react"
 import { CldImage } from "next-cloudinary"
 import { useScrollLock } from "@/hooks/useScrollLock"
 
-// Module-level flag: bertahan hidup selama browser session (client-side transitions),
-// namun langsung ter-reset (kembali false) pada setiap page refresh (full reload).
 let preloaderHasShown = false
 
 const Preloader = () => {
@@ -110,7 +107,6 @@ const Preloader = () => {
             stagger: -0.075
         }, 3.5)
 
-        // Hanya animasikan preloader itu sendiri untuk slide up (clip-path)
         tl.to('.preloader', {
             clipPath: 'polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)',
             duration: 1,
@@ -123,7 +119,7 @@ const Preloader = () => {
     if (!shouldShow) return null
 
     return (
-        <div className="preloader bg-neutral-900 fixed top-0 left-0 w-full min-h-svh overflow-hidden z-50">
+        <div className="preloader bg-neutral-900 fixed top-0 left-0 w-full min-h-svh overflow-hidden z-99">
             <div className="preloader-images absolute top-0 left-0 w-full h-full">
                 {imageList.map((item, index) => (
                     <CldImage src={item} key={index} alt={`Preloader ${index}`} width={250} height={400} className="object-cover w-60 h-60 preloader-img" />
@@ -133,7 +129,7 @@ const Preloader = () => {
             <div className="preloader-header text-theme">
                 <h1 className="uppercase text-4xl md:text-5xl lg:text-6xl font-semibold absolute top-3/4 left-1/2 -translate-x-1/2 -translate-y-1/2">Loreast</h1>
 
-                <div className="preloader-counter text-lg absolute top-1/3 sm:top-2/5 left-4/5 sm:left-3/5 -translate-x-1/2 translate-y-1/2 ml-10 overflow-hidden">
+                <div className="preloader-counter text-lg absolute top-1/3 sm:top-2/5 left-4/5 sm:left-3/5 -translate-x-1/2 translate-y-1/2 ml-10 md:ml-20 lg:ml-10 overflow-hidden">
                     <p>000</p>
                 </div>
             </div>

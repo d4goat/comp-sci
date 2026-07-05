@@ -96,7 +96,6 @@ const Copy = forwardRef<CopyRef, CopyProps>(({
         gsap.set(linesRef.current, { opacity: 0 })
         gsap.set(blocks.current, { scaleX: 0, transformOrigin: 'left center' })
 
-        // cari semua highlight bg di dalam setiap line, lalu set state awal
         linesRef.current.forEach((line) => {
             const highlightEls = line.querySelectorAll('.highlight-bg')
             gsap.set(highlightEls, { scaleX: 0, transformOrigin: 'left center' })
@@ -140,7 +139,6 @@ const Copy = forwardRef<CopyRef, CopyProps>(({
                 timelinesRef.current.push(tl)
             })
         } else {
-            // immediate
             blocks.current.forEach((block, index) => {
                 createBlockRevealAnimation({ block, line: linesRef.current[index], index })
             })

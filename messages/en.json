@@ -1,0 +1,130 @@
+{
+  "Navigation": {
+    "home": "Home",
+    "about": "About",
+    "listDestination": "Destinations",
+    "tripPlanner": "Trip Planner"
+  },
+  "Categories": {
+    "Volcanic": "Volcanic",
+    "Forest": "Forest",
+    "Sunset": "Sunset",
+    "Ocean": "Ocean"
+  },
+  "Labels": {
+    "domestik": "Domestic",
+    "asing": "Foreigner",
+    "tiketMasuk": "Entrance Ticket",
+    "snorkeling": "Snorkeling"
+  },
+  "TripPlanner": {
+    "title": "Choose Your Vacation Vibes",
+    "filterAll": "All"
+  },
+  "ListDestination": {
+    "title": "Destinations"
+  },
+  "About": {
+    "part1": "Is",
+    "part2": " a website dedicated to introducing the natural beauty, culture, and ecotourism of Banyuwangi through an informative and inspiring digital experience. By delivering engaging and easily accessible information, ",
+    "part3": "Journey with Loreast",
+    "part4": " aims to inspire more people to enjoy the wonders of Banyuwangi while actively contributing to sustainable tourism."
+  },
+  "Operational": {
+    "heading": "Operational Information",
+    "card1Title": "Hours & Operational Status",
+    "card1Field1": "Opening Hours",
+    "card1Field2": "Status",
+    "card1StatusOpen": "Open",
+    "card1StatusClosed": "Closed",
+    "card2Title": "Entrance Ticket Pricing",
+    "card2Note": "*Ticket prices are subject to change at any time according to the management's policy.",
+    "card3Title": "Visiting Tips",
+    "backHome": "Back to Home Page"
+  },
+  "Destinations": {
+    "kawah-ijen": {
+      "title": "Ijen Crater",
+      "description": "Ijen Crater is one of the most mesmerizing natural tourist destinations, situated on the border of Banyuwangi and Bondowoso Regencies, East Java. Located at an altitude of 2,386 meters above sea level, this crater holds the world's largest acidic crater lake, radiating a breathtaking turquoise glow.",
+      "additionalDesc": "The main attraction that makes Ijen Crater world-renowned is the Blue Fire phenomenon, a rare natural wonder found in only two places on Earth. This blue flame is formed by high-pressure sulfur gas escaping through rock fissures at temperatures reaching 600°C, igniting upon contact with the air. This magical sight can only be witnessed in the early hours before sunrise.",
+      "notes": "Beyond its natural beauty, Ijen Crater is also the livelihood source for traditional sulfur miners. They resiliently carry tens of kilograms of yellow sulfur chunks from the crater floor, navigating steep and heavily smoked terrains.",
+      "visitTips": [
+        "Gas masks are mandatory",
+        "Wear a thick jacket",
+        "Hiking starts around 01:00-02:00 AM"
+      ]
+    },
+    "taman-nasional-baluran": {
+      "title": "Baluran National Park",
+      "description": "Baluran National Park, affectionately dubbed the 'Africa van Java', is a unique conservation area offering vast savannahs, seasonal forests, and coastal ecosystems. Here, visitors can witness how golden grasslands meet the majestic backdrop of Mount Baluran, delivering a safari adventure sensation akin to the African continent.",
+      "additionalDesc": "The 10,000-hectare Bekol Savannah is the heart of this national park. During the dry season, it transforms into a stunning expanse of golden-brown fields. This area serves as the natural habitat for Javan bulls, wild buffaloes, deer, and peacocks, which frequently appear in the morning and late afternoon while foraging.",
+      "notes": "In addition to the savannah, visitors can explore Bama Beach, which features beautiful mangrove forests and snorkeling spots. There is also a historical site in the form of a Japanese cave from World War II in the Batangan area. Please remember that this entire area is protected; flying drones without a special permit is strictly prohibited to preserve the tranquility of the wildlife.",
+      "visitTips": [
+        "Use a private vehicle",
+        "Arrive early in the morning",
+        "Drones are strictly prohibited"
+      ]
+    },
+    "de-djawatan-forest": {
+      "title": "De Djawatan Forest",
+      "description": "De Djawatan Forest is an ecotourism destination featuring a landscape of giant, centuries-old Trembesi trees with sprawling branches that form a natural canopy. With sunlight piercing through the foliage, this forest creates a serene and photogenic magical atmosphere, often likened to a fairy-tale destination in Banyuwangi.",
+      "additionalDesc": "There are over 800 ancient Trembesi trees whose trunks measure several meters in circumference. Originally a timber storage area owned by Perhutani (the state forestry company), it has now transformed into a deeply shaded green open space. The protruding roots and moss-covered trunks impart an exotic, primeval forest feel, highly favored by photographers.",
+      "notes": "This area is a favorite for family tourism, equipped with facilities like horse-drawn carriages (delman), ATV rentals, and small cafes nestled beneath the trees. The air here feels incredibly fresh, as Trembesi trees are known as highly effective carbon sinks. Please ensure you maintain cleanliness and do not damage the tree bark while in the area.",
+      "visitTips": [
+        "Arrive in the morning for dramatic lighting",
+        "ATVs and horse carriages are available"
+      ]
+    },
+    "pantai-pulau-merah": {
+      "title": "Red Island Beach",
+      "description": "Red Island Beach (Pantai Pulau Merah) features a vast stretch of fine white sand along the southern coast of Banyuwangi. Its main unique trait is a 200-meter-high hill made of brick-red soil standing firmly off the coast, creating an iconic panorama unmatched by any other beach along Java's southern shores.",
+      "additionalDesc": "The name 'Red Island' is derived from the reddish hue the hill's soil takes on when hit by sunlight. During low tide, visitors can even walk across the sandbar to the small island. The waves here are consistently stable, making it a favorite spot for both international and beginner surfers to hone their skills.",
+      "notes": "Besides being a water sports hub, this beach holds spiritual significance with the presence of Tawang Alun Temple near the parking area. The best time to maximize its beauty is in the late afternoon during sunset, when the sky radiates a reddish-orange hue that beautifully contrasts with the red hills, offering an unforgettable aesthetic experience.",
+      "visitTips": [
+        "Surfboard rentals are available",
+        "Use the main national road for access"
+      ]
+    },
+    "taman-nasional-alas-purwo": {
+      "title": "Alas Purwo National Park",
+      "description": "Alas Purwo National Park is the oldest forest and one of the most crucial conservation areas on the island of Java. Renowned for its exceptionally high biodiversity, this national park harbors a combination of landscapes ranging from bamboo forests, karst formations, and savannahs to strings of exotic beaches directly facing the crashing waves of the Indian Ocean.",
+      "additionalDesc": "Alas Purwo is home to Plengkung Beach, or G-Land, one of the world's best surfing beaches. Beyond its marine side, the Sadengan Savannah serves as a wildlife observation center to view Javan bulls, peacocks, and herds of deer in their natural habitat. The ecosystem's balance remains highly pristine, bolstered by its status as a world biosphere reserve.",
+      "notes": "Local communities believe this forest holds profound spiritual value and was historically the last refuge of the Majapahit people. Due to its massive area and somewhat challenging access, visitors are highly advised to use sturdy private vehicles. Cellular signal is extremely scarce inside, so prepare a physical map or download an offline map before departing.",
+      "visitTips": [
+        "Private vehicles are mandatory",
+        "Cellular signal is very weak",
+        "Prepare a physical map"
+      ]
+    },
+    "teluk-hijau": {
+      "title": "Green Bay",
+      "description": "Green Bay (Teluk Hijau) is a hidden paradise offering seawater with stunning turquoise gradients caused by algae reflections on the shallow seabed. Surrounded by high cliffs and lush tropical trees, this beach is an idyllic destination for those seeking tranquility amidst the pristine nature of Meru Betiri National Park.",
+      "additionalDesc": "The crystal-clear turquoise color is the main draw, creating a beautiful contrast with the clean white sand. Not far from the shoreline lies the 8-meter-high Bidadari Waterfall. This waterfall provides a refreshing touch for visitors wanting to rinse off the saltwater after swimming, while also serving as an incredibly natural photographic backdrop.",
+      "notes": "Accessing the location requires a bit of adventure; visitors can choose a 1 km forest trekking route to enjoy the scenery or rent a boat from Rajegwesi Beach. Because it is located within a protected area, there are no permanent food stalls on the beach. It is advisable to bring enough provisions and always maintain cleanliness to preserve the surrounding ecosystem.",
+      "visitTips": [
+        "1 km forest trek or take a boat",
+        "Bring your own food and drinks"
+      ]
+    },
+    "bangsring-underwater": {
+      "title": "Bangsring Underwater",
+      "description": "Bangsring Underwater is a pioneer in conservation-based marine tourism that successfully transformed an area previously scarred by fish bombing into an underwater paradise. Managed independently by local communities who are now deeply committed to coral reef preservation, it has become one of Banyuwangi's best educational tourism icons.",
+      "additionalDesc": "Its main attraction is the Floating House (Rumah Apung), where visitors can enjoy snorkeling among highly healthy coral reefs. The most sought-after experience is swimming directly with docile sharks in a safe conservation pen, accompanied by professional guides. Glass-bottom boats are also available for those wishing to see underwater beauty without getting wet.",
+      "notes": "This area serves as the main gateway to cross over to Tabuhan Island or Menjangan Island. Because the entrance road is quite narrow, large bus groups are advised to stop at the outer parking area and use shuttles or smaller vehicles. Your support through the entrance ticket is highly meaningful for the sustainability of the coral reef preservation program and the local fishermen's economy.",
+      "visitTips": [
+        "Large vehicles cannot enter the tourist area",
+        "Arrive early"
+      ]
+    },
+    "pantai-boom-marina": {
+      "title": "Boom Marina Beach",
+      "description": "Boom Marina Beach is a modern public space that blends the historical traces of an important colonial-era port with a fresh face as an elegant yacht marina. Located very close to the city center, this beach is the meeting point of history, sports, and the lifestyle of Banyuwangi's people, with direct views over the Bali Strait.",
+      "additionalDesc": "The main icon here is the Boom Bridge, a spiral-style curved bridge stretching over the water, becoming a favorite spot for tourists to take selfies. This area frequently serves as the main stage for major Banyuwangi events, such as the Gandrung Sewu Festival involving thousands of dancers, as well as international events like the Banyuwangi Beach Jazz Festival which draws massive audiences.",
+      "notes": "This marina boasts comprehensive facilities and is highly accessible to everyone. You can enjoy the sunrise in the morning or a dramatic sunset at dusk in the exact same location. Given its central location, this beach is very easy to reach and is the perfect choice if you only have a short time for sightseeing in Banyuwangi.",
+      "visitTips": [
+        "Perfect for both sunrise and sunset",
+        "Very easy to access from the city center"
+      ]
+    }
+  }
+}

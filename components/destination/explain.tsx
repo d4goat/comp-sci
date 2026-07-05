@@ -37,7 +37,7 @@ const Explain = ({ description, additionalDesc, notes }: { description: string, 
             backfaceVisibility: 'hidden'
         })
         gsap.set(panel2Ref.current, {
-            y: 60, // Sedikit dikurangi dari 80 agar transisi mobile tidak terlalu jauh melompat
+            y: 60,
             autoAlpha: 0,
             filter: 'blur(16px)',
             transformPerspective: 1000,
@@ -56,7 +56,7 @@ const Explain = ({ description, additionalDesc, notes }: { description: string, 
                 trigger: containerRef.current,
                 start: 'top top',
                 end: 'bottom bottom',
-                scrub: 1, // Dipercepat sedikit dari 1.2 agar lebih responsif di mobile
+                scrub: 1,
             }
         })
 
@@ -100,7 +100,6 @@ const Explain = ({ description, additionalDesc, notes }: { description: string, 
             duration: 0.7
         }, 1.8)
 
-        // Pastikan ScrollTrigger menghitung ulang setelah inisialisasi state selesai
         ScrollTrigger.refresh();
 
     }, { scope: containerRef })
@@ -110,11 +109,8 @@ const Explain = ({ description, additionalDesc, notes }: { description: string, 
             ref={containerRef}
             className="relative h-[350vh] w-full"
         >
-            {/* FIX: Mengubah h-dvh menjadi h-screen agar tinggi tetap konsisten saat URL bar mobile bergeser */}
             <div className="sticky top-0 h-screen w-full overflow-hidden bg-white text-gray-800">
 
-                {/* Panel 1 — Description */}
-                {/* FIX: Ditambahkan justify-center agar teks panjang tidak menjorok paksa ke atas */}
                 <div
                     ref={panel1Ref}
                     className="absolute inset-0 flex flex-col justify-center gap-4 px-6 sm:px-12 md:px-20 py-10"
@@ -125,25 +121,21 @@ const Explain = ({ description, additionalDesc, notes }: { description: string, 
                     </p>
                 </div>
 
-                {/* Panel 2 — Additional Description */}
                 <div
                     ref={panel2Ref}
                     className="absolute inset-0 flex flex-col justify-center gap-4 px-6 sm:px-12 md:px-20 py-10 opacity-0"
                     style={{ filter: 'blur(16px)' }}
                 >
-                    {/* <h2 className="uppercase text-neutral-400 text-sm md:text-base font-semibold tracking-wider">Informasi Tambahan</h2> */}
                     <p className="text-3xl md:text-5xl font-bold leading-tight max-w-6xl">
                         {additionalDesc}
                     </p>
                 </div>
 
-                {/* Panel 3 — Notes */}
                 <div
                     ref={panel3Ref}
                     className="absolute inset-0 flex flex-col justify-center gap-4 px-6 sm:px-12 md:px-20 py-10 opacity-0"
                     style={{ filter: 'blur(16px)' }}
                 >
-                    {/* <h2 className="uppercase text-neutral-400 text-sm md:text-base font-semibold tracking-wider">Akses & Tips</h2> */}
                     <p className="text-3xl md:text-5xl font-bold leading-tight max-w-6xl">
                         {notes}
                     </p>

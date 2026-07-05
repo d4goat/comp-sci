@@ -6,6 +6,9 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 export const useLenis = () => {
   useEffect(() => {
     const lenis = new Lenis();
+    if (typeof window !== "undefined") {
+      (window as any).lenis = lenis;
+    }
     let rafId: number;
 
     lenis.on("scroll", () => {
@@ -22,6 +25,9 @@ export const useLenis = () => {
     return () => {
       cancelAnimationFrame(rafId);
       lenis.destroy();
+      if (typeof window !== "undefined") {
+        delete (window as any).lenis;
+      }
     };
   }, []);
 };

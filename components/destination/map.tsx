@@ -11,12 +11,13 @@ import { gsap } from "@/lib/gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
+import { useLocale } from "next-intl";
 
-const MapDestination = ({ latitude, longitude, title, street }: { latitude: number, longitude: number, title: string, street: string }) => {
+const MapDestination = ({ latitude, longitude, title, street, mapUrl }: { latitude: number, longitude: number, title: string, street: string, mapUrl: string }) => {
+    const locale = useLocale()
     const mapRef = useRef<HTMLDivElement>(null)
     const infoRef = useRef<HTMLDivElement>(null)
 
-    const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${longitude},${latitude}`
     const wazeUrl = `https://waze.com/ul?ll=${longitude},${latitude}&navigate=yes`
 
     // Format koordinat DMS (Degrees°Minutes'Seconds")
@@ -60,17 +61,17 @@ const MapDestination = ({ latitude, longitude, title, street }: { latitude: numb
     return (
         <section className="min-h-screen px-4 sm:px-8 md:px-20 py-16 md:py-28 bg-white flex flex-col">
             <Copy>
-                <h2 className="text-4xl md:text-6xl font-semibold mb-8 md:mb-16">Lokasi {title}</h2>
+                <h2 className="text-4xl md:text-6xl font-semibold mb-8 md:mb-16">{locale === 'en' ? 'Location' : 'Lokasi'} {title}</h2>
             </Copy>
 
             {/* Map */}
             <div
                 data-lenis-prevent
-                className="rounded-xl overflow-hidden shadow-lg h-[300px] sm:h-[380px] md:h-[500px] shrink-0"
+                className="rounded-xl overflow-hidden shadow-lg h-75 sm:h-95 md:h-125 shrink-0"
                 ref={mapRef}
             >
-                <Map center={[longitude, latitude]} zoom={11} className="rounded-xl overflow-hidden shadow-lg">
-                    <MapMarker latitude={latitude} longitude={longitude}>
+                <Map center={[latitude, longitude]} zoom={12} className="rounded-xl overflow-hidden shadow-lg">
+                    <MapMarker latitude={longitude} longitude={latitude}>
                         <MarkerContent>
                             <MapPin className='fill-white stroke-black' size={28} />
                             <MarkerLabel position="bottom" className="text-sm md:text-xl text-white">{title}</MarkerLabel>
@@ -90,7 +91,7 @@ const MapDestination = ({ latitude, longitude, title, street }: { latitude: numb
                         <MapPin size={16} className="text-white" />
                     </div>
                     <div className="flex flex-col gap-1 min-w-0">
-                        <span className="text-xs uppercase tracking-widest text-neutral-400 font-semibold">Alamat</span>
+                        <span className="text-xs uppercase tracking-widest text-neutral-400 font-semibold">{locale === 'en' ? 'Address' : 'Alamat'}</span>
                         <p className="text-sm md:text-base font-medium text-neutral-800 leading-snug">{street}</p>
                     </div>
                 </div>
@@ -101,18 +102,18 @@ const MapDestination = ({ latitude, longitude, title, street }: { latitude: numb
                         <Compass size={16} className="text-white" />
                     </div>
                     <div className="flex flex-col gap-1">
-                        <span className="text-xs uppercase tracking-widest text-neutral-400 font-semibold">Koordinat</span>
+                        <span className="text-xs uppercase tracking-widest text-neutral-400 font-semibold">{locale === 'en' ? 'Coordinates' : 'Koordinat'}</span>
                         <p className="text-xs md:text-sm font-mono text-neutral-700 leading-relaxed">
-                            {formatCoord(longitude, 'N', 'S')}
+                            {formatCoord(longitude, locale === 'en' ? 'N' : 'S', locale === 'en' ? 'E' : 'W')}
                             <br />
-                            {formatCoord(latitude, 'E', 'W')}
+                            {formatCoord(latitude, locale === 'en' ? 'E' : 'N', locale === 'en' ? 'W' : 'S')}
                         </p>
                     </div>
                 </div>
 
                 {/* Google Maps button */}
                 <a
-                    href={googleMapsUrl}
+                    href={mapUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="group bg-neutral-900 hover:bg-neutral-700 transition-colors duration-300 rounded-xl p-5 flex gap-4 items-center cursor-pointer"
@@ -121,7 +122,7 @@ const MapDestination = ({ latitude, longitude, title, street }: { latitude: numb
                         <Navigation size={16} className="text-white" />
                     </div>
                     <div className="flex flex-col gap-0.5 flex-1">
-                        <span className="text-xs uppercase tracking-widest text-neutral-400 font-semibold">Buka di</span>
+                        <span className="text-xs uppercase tracking-widest text-neutral-400 font-semibold">{locale === 'en' ? 'Open with' : 'Buka dengan'}</span>
                         <span className="text-sm font-semibold text-white">Google Maps</span>
                     </div>
                     <ExternalLink size={14} className="text-neutral-500 group-hover:text-white transition-colors shrink-0" />
@@ -140,7 +141,7 @@ const MapDestination = ({ latitude, longitude, title, street }: { latitude: numb
                         </svg>
                     </div>
                     <div className="flex flex-col gap-0.5 flex-1">
-                        <span className="text-xs uppercase tracking-widest text-[#06CCFF]/70 font-semibold">Buka di</span>
+                        <span className="text-xs uppercase tracking-widest text-[#06CCFF]/70 font-semibold">{locale === 'en' ? 'Open with' : 'Buka dengan'}</span>
                         <span className="text-sm font-semibold text-[#06CCFF]">Waze</span>
                     </div>
                     <ExternalLink size={14} className="text-[#06CCFF]/40 group-hover:text-[#06CCFF] transition-colors shrink-0" />

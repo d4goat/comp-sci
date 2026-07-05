@@ -1,7 +1,7 @@
 
-const Footer = () => {
+const Footer = ({className}: {className?: string}) => {
     return (
-        <footer className="border-t border-border py-14 bg-text text-white overflow-hidden">
+        <footer className={`bg-text text-white overflow-hidden ${className}`}>
             <div className="container mx-auto">
                 <div className="flex flex-col md:flex-row justify-between items-center w-full">
                     <p>&copy; 2026 Loreast. All rights reserved.</p>
